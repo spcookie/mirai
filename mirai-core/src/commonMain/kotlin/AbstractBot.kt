@@ -45,6 +45,10 @@ internal abstract class AbstractBot(
 ) : Bot, CoroutineScope {
 
     override var bizId: Long? = null
+        get() = field
+        set(value) {
+            field = value
+        }
 
     ///////////////////////////////////////////////////////////////////////////
     // lifecycle

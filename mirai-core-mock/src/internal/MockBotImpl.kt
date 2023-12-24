@@ -65,6 +65,10 @@ internal class MockBotImpl(
 ) : MockBot, Bot, ContactOrBot {
 
     override var bizId: Long? = null
+        get() = field
+        set(value) {
+            field = value
+        }
 
     @JvmField
     internal val contactDatabase = ContactDatabase(this)
