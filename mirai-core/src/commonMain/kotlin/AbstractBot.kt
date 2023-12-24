@@ -43,6 +43,9 @@ internal abstract class AbstractBot(
     final override val configuration: BotConfiguration,
     final override val id: Long,
 ) : Bot, CoroutineScope {
+
+    override var bizId: Long? = null
+
     ///////////////////////////////////////////////////////////////////////////
     // lifecycle
     ///////////////////////////////////////////////////////////////////////////

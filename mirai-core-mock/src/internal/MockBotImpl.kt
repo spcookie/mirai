@@ -63,6 +63,9 @@ internal class MockBotImpl(
     override val userProfileService: UserProfileService,
     override val avatarGenerator: AvatarGenerator,
 ) : MockBot, Bot, ContactOrBot {
+
+    override var bizId: Long? = null
+
     @JvmField
     internal val contactDatabase = ContactDatabase(this)
     private val botccinfo = contactDatabase.acquireCI(id, nick)

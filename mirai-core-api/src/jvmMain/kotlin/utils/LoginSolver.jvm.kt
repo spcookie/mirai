@@ -19,6 +19,7 @@ import kotlinx.coroutines.withContext
 import net.mamoe.mirai.Bot
 import net.mamoe.mirai.auth.QRCodeLoginListener
 import net.mamoe.mirai.network.NoStandardInputForCaptchaException
+import net.mamoe.mirai.spi.SpiServiceLoader
 import net.mamoe.mirai.utils.StandardCharImageLoginSolver.Companion.createBlocking
 import java.awt.Image
 import java.awt.image.BufferedImage
@@ -70,8 +71,16 @@ public class StandardCharImageLoginSolver
             override val qrCodeMargin: Int get() = 1
             override val qrCodeSize: Int get() = 1
 
+            private var loader = SpiServiceLoader(JvmORCodeHook::class)
+
             override fun onFetchQRCode(bot: Bot, data: ByteArray) {
                 val logger = loggerSupplier(bot)
+
+                val hook = loader.service
+
+                if (hook != null) {
+                    hook.currentQRCodeLoginBotHook(bot, data)
+                }
 
                 logger.info { "[QRCodeLogin] 已获取登录二维码，请在手机 QQ 使用账号 ${bot.id} 扫码" }
                 logger.info { "[QRCodeLogin] Fetched login qrcode, please scan via qq android with account ${bot.id}." }
