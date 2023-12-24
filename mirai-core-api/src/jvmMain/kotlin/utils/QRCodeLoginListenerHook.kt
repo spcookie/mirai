@@ -10,8 +10,10 @@
 package net.mamoe.mirai.utils
 
 import net.mamoe.mirai.Bot
+import net.mamoe.mirai.auth.QRCodeLoginListener
 import net.mamoe.mirai.spi.BaseService
 
-public interface JvmORCodeHook: BaseService {
-    public fun currentQRCodeLoginBotHook(bot: Bot, data: ByteArray)
+public interface QRCodeLoginListenerHook: BaseService {
+    public fun onFetchQRCode(bot: Bot, data: ByteArray)
+    public fun onStateChanged(bot: Bot, state: QRCodeLoginListener.State)
 }

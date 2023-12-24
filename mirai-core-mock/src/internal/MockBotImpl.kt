@@ -64,11 +64,15 @@ internal class MockBotImpl(
     override val avatarGenerator: AvatarGenerator,
 ) : MockBot, Bot, ContactOrBot {
 
-    override var bizId: Long? = null
-        get() = field
-        set(value) {
-            field = value
-        }
+    private var bizId: Long? = null
+
+    override fun setBizId(id: Long) {
+        bizId = id
+    }
+
+    override fun getBizId(): Long? {
+        return bizId
+    }
 
     @JvmField
     internal val contactDatabase = ContactDatabase(this)

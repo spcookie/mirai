@@ -44,11 +44,15 @@ internal abstract class AbstractBot(
     final override val id: Long,
 ) : Bot, CoroutineScope {
 
-    override var bizId: Long? = null
-        get() = field
-        set(value) {
-            field = value
-        }
+    private var bizId: Long? = null
+
+    override fun setBizId(id: Long) {
+        bizId = id
+    }
+
+    override fun getBizId(): Long? {
+        return bizId
+    }
 
     ///////////////////////////////////////////////////////////////////////////
     // lifecycle

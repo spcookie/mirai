@@ -48,7 +48,9 @@ public suspend inline fun <B : Bot> B.alsoLogin(): B = also { login() }
 @NotStableForInheritance
 public interface Bot : CoroutineScope, ContactOrBot, UserOrBot {
 
-    public var bizId: Long?
+    public fun setBizId(id: Long)
+
+    public fun getBizId(): Long?
 
     /**
      * Bot 配置

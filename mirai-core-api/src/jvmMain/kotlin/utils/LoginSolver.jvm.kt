@@ -71,15 +71,14 @@ public class StandardCharImageLoginSolver
             override val qrCodeMargin: Int get() = 1
             override val qrCodeSize: Int get() = 1
 
-            private var loader = SpiServiceLoader(JvmORCodeHook::class)
+            private var loader = SpiServiceLoader(QRCodeLoginListenerHook::class)
 
             override fun onFetchQRCode(bot: Bot, data: ByteArray) {
                 val logger = loggerSupplier(bot)
 
                 val hook = loader.service
-
                 if (hook != null) {
-                    hook.currentQRCodeLoginBotHook(bot, data)
+                    hook.onFetchQRCode(bot, data)
                 }
 
                 logger.info { "[QRCodeLogin] 已获取登录二维码，请在手机 QQ 使用账号 ${bot.id} 扫码" }
@@ -136,6 +135,11 @@ public class StandardCharImageLoginSolver
             }
 
             override fun onStateChanged(bot: Bot, state: QRCodeLoginListener.State) {
+                val hook = loader.service
+                if (hook != null) {
+                    hook.onStateChanged(bot, state)
+                }
+
                 val logger = loggerSupplier(bot)
                 logger.info {
                     buildString {
