@@ -62,8 +62,7 @@ fun Project.configureRemoteRepos() {
                 maven {
                     name = "MavenCentral"
                     // Maven Central
-                    // setUrl("https://oss.sonatype.org/service/local/staging/deploy/maven2")
-                    setUrl("https://maven.pkg.github.com/spcookie/Tokisaki")
+                     setUrl("https://s01.oss.sonatype.org/service/local/staging/deploy/maven2")
 
                     credentials {
                         username = sonatype.user

@@ -53,7 +53,7 @@ BuildSrcRootProjectHolder.lastUpdateTime = System.currentTimeMillis()
 analyzes.CompiledCodeVerify.run { registerAllVerifyTasks() }
 
 allprojects {
-    group = "net.mamoe"
+    group = "io.github.spcookie"
     version = Versions.project
 
     repositories {
