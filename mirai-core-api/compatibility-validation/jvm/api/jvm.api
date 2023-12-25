@@ -11,6 +11,7 @@ public abstract interface class net/mamoe/mirai/Bot : kotlinx/coroutines/Corouti
 	public static fun findInstance (J)Lnet/mamoe/mirai/Bot;
 	public abstract fun getAsFriend ()Lnet/mamoe/mirai/contact/Friend;
 	public abstract fun getAsStranger ()Lnet/mamoe/mirai/contact/Stranger;
+	public abstract fun getBizId ()Ljava/lang/Long;
 	public fun getBot ()Lnet/mamoe/mirai/Bot;
 	public abstract fun getConfiguration ()Lnet/mamoe/mirai/utils/BotConfiguration;
 	public abstract fun getEventChannel ()Lnet/mamoe/mirai/event/EventChannel;
@@ -38,6 +39,7 @@ public abstract interface class net/mamoe/mirai/Bot : kotlinx/coroutines/Corouti
 	public abstract fun login (Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
 	public fun nudge ()Lnet/mamoe/mirai/message/action/BotNudge;
 	public synthetic fun nudge ()Lnet/mamoe/mirai/message/action/Nudge;
+	public abstract fun setBizId (J)V
 }
 
 public final class net/mamoe/mirai/Bot$Companion {
@@ -6323,6 +6325,11 @@ public abstract interface class net/mamoe/mirai/utils/ProgressionCallback {
 public final class net/mamoe/mirai/utils/ProgressionCallback$Companion {
 	public final fun asProgressionCallback (Lkotlinx/coroutines/channels/SendChannel;Z)Lnet/mamoe/mirai/utils/ProgressionCallback;
 	public static synthetic fun asProgressionCallback$default (Lnet/mamoe/mirai/utils/ProgressionCallback$Companion;Lkotlinx/coroutines/channels/SendChannel;ZILjava/lang/Object;)Lnet/mamoe/mirai/utils/ProgressionCallback;
+}
+
+public abstract interface class net/mamoe/mirai/utils/QRCodeLoginListenerHook : net/mamoe/mirai/spi/BaseService {
+	public abstract fun onFetchQRCode (Lnet/mamoe/mirai/Bot;[B)V
+	public abstract fun onStateChanged (Lnet/mamoe/mirai/Bot;Lnet/mamoe/mirai/auth/QRCodeLoginListener$State;)V
 }
 
 public abstract interface class net/mamoe/mirai/utils/RemoteFile {

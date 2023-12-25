@@ -62,7 +62,8 @@ fun Project.configureRemoteRepos() {
                 maven {
                     name = "MavenCentral"
                     // Maven Central
-                    setUrl("https://oss.sonatype.org/service/local/staging/deploy/maven2")
+                    // setUrl("https://oss.sonatype.org/service/local/staging/deploy/maven2")
+                    setUrl("https://maven.pkg.github.com/spcookie/Tokisaki")
 
                     credentials {
                         username = sonatype.user
@@ -79,7 +80,7 @@ fun Project.configureRemoteRepos() {
 @Suppress("NOTHING_TO_INLINE")
 inline fun Project.configurePublishing(
     artifactId: String,
-    vcs: String = "https://github.com/mamoe/mirai",
+    vcs: String = "https://github.com/spcookie/mirai",
     addProjectComponents: Boolean = true,
     skipPublicationSetup: Boolean = false,
     addShadowJar: Boolean = true

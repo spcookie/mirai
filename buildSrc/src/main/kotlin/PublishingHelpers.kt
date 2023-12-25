@@ -74,7 +74,7 @@ val Project.publications: PublicationContainer
 
 fun MavenPublication.setupPom(
     project: Project,
-    vcs: String = "https://github.com/mamoe/mirai"
+    vcs: String = "https://github.com/spcookie/mirai"
 ) {
     pom {
         scm {
@@ -86,15 +86,15 @@ fun MavenPublication.setupPom(
         licenses {
             license {
                 name.set("GNU AGPLv3")
-                url.set("https://github.com/mamoe/mirai/blob/master/LICENSE")
+                url.set("https://github.com/spcookie/mirai/blob/master/LICENSE")
             }
         }
 
         developers {
             developer {
-                id.set("mamoe")
-                name.set("Mamoe Technologies")
-                email.set("support@mamoe.net")
+                id.set("spcookie")
+                name.set("Spcookie Technologies")
+                email.set("spcookie@qq.com")
             }
         }
 
